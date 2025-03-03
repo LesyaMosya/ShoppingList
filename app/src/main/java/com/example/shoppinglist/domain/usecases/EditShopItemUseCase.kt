@@ -5,7 +5,7 @@ import com.example.shoppinglist.domain.ShopListRepository
 
 class EditShopItemUseCase(private val repository: ShopListRepository) {
 
-    fun editShopItems(shopItem: ShopItem) {
-        repository.editShopItems(shopItem)
+    fun editShopItem(shopItem: ShopItem) {
+        repository.editShopItem(shopItem)
     }
 }
