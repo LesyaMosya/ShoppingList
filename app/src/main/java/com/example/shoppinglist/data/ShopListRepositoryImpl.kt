@@ -27,8 +27,7 @@ object ShopListRepositoryImpl: ShopListRepository {
         updateList()
     }
 
-    override fun deleteShopItem(shopItemId: Int) {
-        val shopItem = getShopItemById(shopItemId)
+    override fun deleteShopItem(shopItem: ShopItem) {
         shopList.remove(shopItem)
         updateList()
     }
