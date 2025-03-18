@@ -42,7 +42,7 @@ class MainActivity : AppCompatActivity() {
             )
         }
 
-        setupLongClockLestener()
+        setupLongClockListener()
         setupClickListener()
 
         setupSwipeListener(rvShopList)
@@ -74,7 +74,7 @@ class MainActivity : AppCompatActivity() {
         shopListAdapter.onShopItemClickListener = { Log.d("MainActivityTest", it.toString()) }
     }
 
-    private fun setupLongClockLestener() {
+    private fun setupLongClockListener() {
         shopListAdapter.onShopItemLongClickListener = { viewModel.changeEnableState(it) }
     }
 }
