@@ -3,9 +3,11 @@ package com.example.shoppinglist.ui
 import androidx.lifecycle.ViewModel
 import com.example.shoppinglist.data.ShopListRepositoryImpl
 import com.example.shoppinglist.domain.ShopItem
-import com.example.shoppinglist.domain.usecases.*
+import com.example.shoppinglist.domain.usecases.DeleteShopItemUseCase
+import com.example.shoppinglist.domain.usecases.EditShopItemUseCase
+import com.example.shoppinglist.domain.usecases.GetShopListUseCase
 
-class MainViewModel : ViewModel(){
+class MainViewModel : ViewModel() {
 
     private val repository = ShopListRepositoryImpl
 

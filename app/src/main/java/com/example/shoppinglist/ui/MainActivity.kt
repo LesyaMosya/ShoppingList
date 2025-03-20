@@ -1,13 +1,12 @@
 package com.example.shoppinglist.ui
 
 import android.os.Bundle
-import android.util.Log
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.example.shoppinglist.R
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class MainActivity : AppCompatActivity() {
 
@@ -16,7 +15,6 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContentView(R.layout.activity_main)
 
         setupRecyclerView()
@@ -25,6 +23,11 @@ class MainActivity : AppCompatActivity() {
             shopListAdapter.submitList(it) //вычисления со списком происходят в отдельном потоке
         }
 
+        val buttonAddItem = findViewById<FloatingActionButton>(R.id.button_add_shop_item)
+        buttonAddItem.setOnClickListener {
+            val intent = ShopItemActivity.newIntentAddItem(this)
+            startActivity(intent)
+        }
     }
 
     private fun setupRecyclerView() {
@@ -71,7 +74,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupClickListener() {
-        shopListAdapter.onShopItemClickListener = { Log.d("MainActivityTest", it.toString()) }
+        shopListAdapter.onShopItemClickListener = {
+            val intent = ShopItemActivity.newIntentEditItem(this, it.id)
+            startActivity(intent)
+        }
     }
 
     private fun setupLongClockListener() {
