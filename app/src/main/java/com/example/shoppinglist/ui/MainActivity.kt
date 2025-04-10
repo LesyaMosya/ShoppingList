@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.shoppinglist.R
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), ShopItemFragment.OnEditingFinishedListener {
 
     private lateinit var viewModel: MainViewModel
     private lateinit var shopListAdapter: ShopListAdapter
@@ -103,6 +103,10 @@ class MainActivity : AppCompatActivity() {
         return shopItemContainer == null
     }
 
+    override fun onEditingFinished() {
+        supportFragmentManager.popBackStack()
+    }
+
     private fun launchFragment(fragment: Fragment) {
         supportFragmentManager.popBackStack()
         supportFragmentManager.beginTransaction()
@@ -110,4 +114,5 @@ class MainActivity : AppCompatActivity() {
             .addToBackStack("ShopItemFragment")
             .commit()
     }
+
 }
